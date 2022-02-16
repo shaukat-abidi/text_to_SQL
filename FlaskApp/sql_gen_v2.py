@@ -98,10 +98,37 @@ def func_gensql():
     final_sql_condition = " AND ".join(conditions)
     sql_query = str(sql_template[sentence_category]) + " " + final_sql_condition
     print(sql_query)
+    
+    # SQL Query
+    # Connect to your postgres DB
+    conn = psycopg2.connect("dbname=postgres user=postgres password=postgres")
+
+    # Open a cursor to perform database operations
+    cur = conn.cursor()
+
+    # Execute a query
+    cur.execute(sql_query)
+
+    # Retrieve query results
+    records = cur.fetchall()
+
+    # Close the connection
+    conn.close()
+    
+    # Prepare the output
+    output_str = ''
+    tot_records = len(records)
+    for _ind, _tuple in enumerate(records):
+        print(_ind, _tuple)
+        if _ind < tot_records - 1:
+            output_str = output_str + str(_tuple[0]) + ','
+        else:
+            output_str = output_str + str(_tuple[0])
+        
 
     #print(docs_new)
     #raw_sql = 'select * from all_tables'
-    resp = {'question': text, "sentence_category": sentence_category, 'translated_sql': sql_query}
+    resp = {'question': text, "sentence_category": sentence_category, 'translated_sql': sql_query, 'output_text': str(output_str)}
     return jsonify(resp)
 
 if __name__== '__main__':

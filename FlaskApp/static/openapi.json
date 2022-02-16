@@ -53,6 +53,9 @@
                     },
                     "sql_execution": {
                       "type": "string"
+                    },
+                    "output_text": {
+                      "type": "string"
                     }
                   }
                 }
