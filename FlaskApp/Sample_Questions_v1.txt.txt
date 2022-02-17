@@ -1,0 +1,7 @@
+Sample Questions:
+Which patients are registered in R3500-AD-1906 ?
+What patients in R3500-AD-1906 are from Germany ?
+How many Female patients are registered in Moticon study ?
+How many Female patients are registered in Actigraph study ?
+Which studies had sites in Germany ? 
+What studies had sites in Germany ?
